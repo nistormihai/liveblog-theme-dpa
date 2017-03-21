@@ -73,12 +73,14 @@ function Posts($resource, config, users) {
     var match = false
       , html = meta.html
       , yt = /(youtube.com|youtu.be)/g // Youtube
+      , facebook = /(facebook.com)/g // Youtube
       , instagram = /(instagram.com|instagr.am)/g // Instagram
       , twitter = /(twitter.com)/g // Twitter
       ;
 
     switch (true) {
       case yt.test(html): match = "YouTube"; break;
+      case facebook.test(html): match = "Facebook"; break;
       case instagram.test(html): match = "Instagram"; break;
       case twitter.test(html): match = "Twitter"; break;
     }
@@ -106,6 +108,7 @@ function Posts($resource, config, users) {
       }
     }
 
+    console.log(isMainEmbed);
     return numEmbeds == 1
       ? isMainEmbed // contains provider
       : false // play doh
