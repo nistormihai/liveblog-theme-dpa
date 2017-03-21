@@ -29,11 +29,13 @@ angular.module('liveblog-embed', [
     allowed: [
       "youtube.com",
       "instagram.com",
-      "twitter.com"
+      "twitter.com",
+      "facebook.com"
     ],
     resize_sources: [
       "dpavideo.23video.com",
-      "youtube.com"
+      "youtube.com",
+      "facebook.com"
     ]
   });
 
