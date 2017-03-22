@@ -139,6 +139,17 @@ angular.module('liveblog-embed')
             }
           }, 100);
           return true;
+        },
+
+        facebook: function(elem) {
+          if (!window.FB) return false
+          else $timeout(function() {
+            if (FB.hasOwnProperty("XFBML")) {
+              FB.XFBML.parse(elem);
+              $rootScope.$emit('setParentFrameHeight'); // resize iframe
+            }
+          }, 100);
+          return true;
         }
       }
 
