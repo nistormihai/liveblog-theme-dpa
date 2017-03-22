@@ -108,7 +108,6 @@ function Posts($resource, config, users) {
       }
     }
 
-    console.log(isMainEmbed);
     return numEmbeds == 1
       ? isMainEmbed // contains provider
       : false // play doh
