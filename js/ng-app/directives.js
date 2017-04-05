@@ -1,7 +1,9 @@
 'use strict';
 var angular = require("angular")
   , _ = require('../lodash-custom')
-  , moment = require('moment');
+  , moment = require('moment')
+  , Photoswipe = require('photoswipe/dist/photoswipe')
+  , PhotoswipeUI = require('photoswipe/dist/photoswipe-ui-default');
 
 require('moment/locale/de'); // Moment.js
 moment.locale("de"); // Set Moment.js to german
@@ -102,6 +104,63 @@ angular.module('liveblog-embed')
       posts: '='
     },
     templateUrl: "template__postlist"
+  };
+}])
+
+.directive('lbItems', [function() {
+  return {
+    restrict: 'E',
+    scope: {
+      items: '='
+    },
+    templateUrl: "template__items",
+    link: function(scope, elem, attrs) {
+
+      // Customize UI
+      var options = {
+        bgOpacity: 1,
+        spacing: 0,
+        history: false,
+        tapToClose: false,
+        closeOnScroll: false,
+        closeOnVerticalDrag: false,
+        allowPanToNext: true,
+        barsSize: {
+          top: 0, bottom: 0
+        }
+      };
+
+      var pswpElement = document.getElementsByClassName("pswp")[0];
+
+      scope.image_items = scope.items.filter(function(item) {
+        return item.item_type === "image"
+      })
+
+      scope.images = scope.image_items.map(function(item) {
+        var media = item.meta.media;
+        return {
+          w: media.renditions.baseImage.width, // image width
+          h: media.renditions.baseImage.height, // image height
+          src: media.renditions.baseImage.href, // path to image
+          msrc: media.renditions.thumbnail.href, // small image placeholder,
+          title: item.meta.caption
+        }
+      })
+
+      scope.openGallery = function() {
+        console.log('foo');
+        var gallery = new Photoswipe(pswpElement, PhotoswipeUI, scope.images, options);
+        gallery.init();
+      }
+    }
+  };
+}])
+
+.directive('lbPhotoswipeContainer', [function() {
+  return {
+    restrict: 'E',
+    scope: {},
+    templateUrl: "js/views/photoswipe.html"
   };
 }])
 

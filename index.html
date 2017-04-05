@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <!-- inject:css -->
-        <link rel="stylesheet" href="/dist/dpa-liveblog-1d36bccbd1.css">
+        <link rel="stylesheet" href="/dist/dpa-liveblog-9fffd811b7.css">
         <!-- endinject -->
     </head>
 
@@ -89,7 +89,32 @@ Bitte f&uuml;hren Sie ein <a href="http://browsehappy.com/">Upgrade</a> durch.</
     <div class="loading" ng-show="timeline.loading">Laden</div>
     <!-- Loading End -->
 
+    <!-- Inject Photoswipe Container once, reuse -->
+    <lb-photoswipe-container></lb-photoswipe-container>
+    <!-- Photoswipe End -->
+
     <!-- Templates -->
+    <script type="text/ng-template" id="template__items">
+        <div lb-item ng-repeat="item in items track by item._id" class="lb-item">   
+            <div ng-switch="item.item_type"> <!-- Item content type switch -->
+                <div ng-switch-when="embed">
+                    <div ng-switch="item.meta.provider_name">
+                        <div ng-switch-default lb-generic-embed item="item"></div>
+                    </div>
+                </div>
+                <div ng-switch-when="image" lb-bind-html">
+                    <figure ng-click="openGallery()">
+                        <img lb-create-sourceset>
+                        <figcaption>
+                            {{ item.meta.caption }}<span ng-if="item.meta.credit"> {{ item.meta.credit }}</span>
+                        </figcaption>
+                    </figure>
+                </div>
+                <article ng-switch-default lb-bind-html html-content="{{ item.text | outboundAnchors }}"></article>
+            </div>
+        </div>
+    </script>
+
     <script type="text/ng-template" id="template__generic-embed">
         <div ng-if="isEmbedCode" class="item--embed" lb-bind-html html-content="{{item.meta.html}}" load-script></div>
         <article class="item--embed">
@@ -115,6 +140,7 @@ Bitte f&uuml;hren Sie ein <a href="http://browsehappy.com/">Upgrade</a> durch.</
             </div>
 
             <div class="lb-post-highlighted" ng-if="post.highlight"></div>
+            <!-- <div class="lb-post-sticky" ng-if="post.sticky"></div> -->
             <div ng-if="post.mainItem.displayDate | isDateChange" class="lb-post-date__fulldate" ng-bind="post.mainItem.displayDate | simpleDate"></div>
             <div ng-if="!post.sticky" date-from-now-or-absolute class="lb-post-date"></div>
 
@@ -123,20 +149,8 @@ Bitte f&uuml;hren Sie ein <a href="http://browsehappy.com/">Upgrade</a> durch.</
                     <i class="fa fa-link fa-2"></i>
                 </a>
             </div>
-
-            <div lb-item ng-repeat="item in post.items track by item._id" class="lb-item">              
-                <div ng-switch="item.item_type"> <!-- Item content type switch -->
-                    <div ng-switch-when="embed">
-                        <div ng-switch="item.meta.provider_name">
-                            <div ng-switch-default lb-generic-embed item="item"></div>
-                        </div>
-                    </div>
-                    <div ng-switch-when="image" lb-bind-html">
-                        
-                    </div>
-                    <article ng-switch-default lb-bind-html html-content="{{ item.text | outboundAnchors }}"></article>
-                </div>
-            </div>
+ 
+            <lb-items items="post.items"></lb-items>
 
             <!-- author plus avatar  -->
             <div class="lb-author" ng-if="timeline.settings.showAuthor">
@@ -149,14 +163,6 @@ Bitte f&uuml;hren Sie ein <a href="http://browsehappy.com/">Upgrade</a> durch.</
             </div>
         </article>
     </script>
-
-    <script type="text/ng-template" id="template__gallery">
-        <figure>
-            <img lb-create-sourceset>
-            <figcaption>{{ item.meta.caption }}<span ng-if="item.meta.credit"> {{ item.meta.credit }}</span></figcaption>
-        </figure>
-    </script>
-
     <!-- Templates End -->
 
     <!-- Pixel -->
@@ -234,7 +240,7 @@ Bitte f&uuml;hren Sie ein <a href="http://browsehappy.com/">Upgrade</a> durch.</
         </script>
 
         <!-- inject:js -->
-<script src="/dist/dpa-liveblog-0e4cd9e91a.js"></script>
+<script src="/dist/dpa-liveblog-8f3a338333.js"></script>
 <!-- endinject -->     
         
     </body>

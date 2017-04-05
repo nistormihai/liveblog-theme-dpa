@@ -9,12 +9,10 @@ require('angular-resource/angular-resource');
 
 // 3rd party
 require('iframe-resizer');
-require('ng-photoswipe');
 
 // Angular base theme
 angular.module('liveblog-embed', [
   'ngResource',
-  'ngPhotoswipe',
   'angular-cache'
   ])
 
