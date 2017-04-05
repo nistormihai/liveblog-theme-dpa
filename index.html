@@ -103,7 +103,7 @@ Bitte f&uuml;hren Sie ein <a href="http://browsehappy.com/">Upgrade</a> durch.</
                     </div>
                 </div>
                 <div ng-switch-when="image" lb-bind-html">
-                    <figure ng-click="openGallery()">
+                    <figure ng-click="openGallery($index)">
                         <img lb-create-sourceset>
                         <figcaption>
                             {{ item.meta.caption }}<span ng-if="item.meta.credit"> {{ item.meta.credit }}</span>
@@ -240,7 +240,7 @@ Bitte f&uuml;hren Sie ein <a href="http://browsehappy.com/">Upgrade</a> durch.</
         </script>
 
         <!-- inject:js -->
-<script src="/dist/dpa-liveblog-8f3a338333.js"></script>
+<script src="/dist/dpa-liveblog-0c9fc48e63.js"></script>
 <!-- endinject -->     
         
     </body>

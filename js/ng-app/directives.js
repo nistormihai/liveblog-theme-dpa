@@ -115,10 +115,15 @@ angular.module('liveblog-embed')
     },
     templateUrl: "template__items",
     link: function(scope, elem, attrs) {
+      var num_images = 0;
+      var pswpElement = document.getElementsByClassName("pswp")[0];
+
+      scope.images = [];
 
       // Customize UI
       var options = {
         bgOpacity: 1,
+        index: 2,
         spacing: 0,
         history: false,
         tapToClose: false,
@@ -130,25 +135,27 @@ angular.module('liveblog-embed')
         }
       };
 
-      var pswpElement = document.getElementsByClassName("pswp")[0];
+      for (var i = scope.items.length - 1; i >= 0; i--) {
+        var item = scope.items[i];
 
-      scope.image_items = scope.items.filter(function(item) {
-        return item.item_type === "image"
-      })
+        if (item.item_type === "image") {
+          var media = item.meta.media;
+          
+          scope.images.push({
+            w: media.renditions.baseImage.width, // image width
+            h: media.renditions.baseImage.height, // image height
+            src: media.renditions.baseImage.href, // path to image
+            msrc: media.renditions.thumbnail.href, // small image placeholder,
+            title: item.meta.caption
+          })
 
-      scope.images = scope.image_items.map(function(item) {
-        var media = item.meta.media;
-        return {
-          w: media.renditions.baseImage.width, // image width
-          h: media.renditions.baseImage.height, // image height
-          src: media.renditions.baseImage.href, // path to image
-          msrc: media.renditions.thumbnail.href, // small image placeholder,
-          title: item.meta.caption
+          scope.items[i].image_index = num_images
+          ++num_images;
         }
-      })
+      }
 
-      scope.openGallery = function() {
-        console.log('foo');
+      scope.openGallery = function(index) {
+        options.index = scope.items[index].image_index;
         var gallery = new Photoswipe(pswpElement, PhotoswipeUI, scope.images, options);
         gallery.init();
       }
