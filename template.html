@@ -100,7 +100,6 @@ Bitte f&uuml;hren Sie ein <a href="http://browsehappy.com/">Upgrade</a> durch.</
             </div>
 
             <div class="lb-post-highlighted" ng-if="post.highlight"></div>
-            <!-- <div class="lb-post-sticky" ng-if="post.sticky"></div> -->
             <div ng-if="post.mainItem.displayDate | isDateChange" class="lb-post-date__fulldate" ng-bind="post.mainItem.displayDate | simpleDate"></div>
             <div ng-if="!post.sticky" date-from-now-or-absolute class="lb-post-date"></div>
 
@@ -118,10 +117,7 @@ Bitte f&uuml;hren Sie ein <a href="http://browsehappy.com/">Upgrade</a> durch.</
                         </div>
                     </div>
                     <div ng-switch-when="image" lb-bind-html">
-                        <figure>
-                            <img lb-create-sourceset>
-                            <figcaption>{{ item.meta.caption }}<span ng-if="item.meta.credit"> {{ item.meta.credit }}</span></figcaption>
-                        </figure>
+                        
                     </div>
                     <article ng-switch-default lb-bind-html html-content="{{ item.text | outboundAnchors }}"></article>
                 </div>
@@ -138,6 +134,14 @@ Bitte f&uuml;hren Sie ein <a href="http://browsehappy.com/">Upgrade</a> durch.</
             </div>
         </article>
     </script>
+
+    <script type="text/ng-template" id="template__gallery">
+        <figure>
+            <img lb-create-sourceset>
+            <figcaption>{{ item.meta.caption }}<span ng-if="item.meta.credit"> {{ item.meta.credit }}</span></figcaption>
+        </figure>
+    </script>
+
     <!-- Templates End -->
 
     <!-- Pixel -->
