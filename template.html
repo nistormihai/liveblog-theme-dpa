@@ -88,12 +88,14 @@ Bitte f&uuml;hren Sie ein <a href="http://browsehappy.com/">Upgrade</a> durch.</
                     </div>
                 </div>
                 <div ng-switch-when="image" lb-bind-html">
-                    <figure ng-click="openGallery($index)">
-                        <img lb-create-sourceset>
-                        <figcaption>
-                            {{ item.meta.caption }}<span ng-if="item.meta.credit"> {{ item.meta.credit }}</span>
-                        </figcaption>
-                    </figure>
+                    <a href class="lb-post-gallery" ng-click="openGallery($index)">
+                        <figure>
+                            <img lb-create-sourceset>
+                            <figcaption>
+                                {{ item.meta.caption }}<span ng-if="item.meta.credit"> {{ item.meta.credit }}</span>
+                            </figcaption>
+                        </figure>
+                    </a>
                 </div>
                 <article ng-switch-default lb-bind-html html-content="{{ item.text | outboundAnchors }}"></article>
             </div>
