@@ -167,7 +167,7 @@ angular.module('liveblog-embed')
   return {
     restrict: 'E',
     scope: {},
-    templateUrl: "js/views/photoswipe.html"
+    templateUrl: window.LB.assets_root + "views/photoswipe.html"
   };
 }])
 
