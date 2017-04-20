@@ -122,17 +122,11 @@ angular.module('liveblog-embed')
 
       // Customize UI
       var options = {
-        bgOpacity: 1,
-        index: 2,
-        spacing: 0,
-        history: false,
-        tapToClose: false,
-        closeOnScroll: false,
-        closeOnVerticalDrag: false,
-        allowPanToNext: true,
-        barsSize: {
-          top: 0, bottom: 0
-        }
+        shareEl: false,
+        shareButtons: [
+          {id:'facebook', label:'Auf Facebook teilen', url:'https://www.facebook.com/sharer/sharer.php?u={{url}}'},
+          {id:'twitter', label:'Auf Twitter teilen', url:'https://twitter.com/intent/tweet?text={{text}}&url={{url}}'}
+        ]
       };
 
       for (var i = scope.items.length - 1; i >= 0; i--) {
@@ -152,6 +146,12 @@ angular.module('liveblog-embed')
           scope.items[i].image_index = num_images
           ++num_images;
         }
+      }
+
+      scope.isGallery = num_images > 0;
+
+      scope.isFirstImage = function(index) {
+        return scope.items[index].image_index === 0
       }
 
       scope.openGallery = function(index) {

@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <!-- inject:css -->
-        <link rel="stylesheet" href="/dist/dpa-liveblog-50a5efbf80.css">
+        <link rel="stylesheet" href="/dist/dpa-liveblog-0559666587.css">
         <!-- endinject -->
     </head>
 
@@ -102,10 +102,12 @@ Bitte f&uuml;hren Sie ein <a href="http://browsehappy.com/">Upgrade</a> durch.</
                         <div ng-switch-default lb-generic-embed item="item"></div>
                     </div>
                 </div>
-                <div ng-switch-when="image" lb-bind-html">
-                    <a href class="lb-post-gallery" ng-click="openGallery($index)">
+                <div ng-switch-when="image" ng-if="isFirstImage($index)" lb-bind-html">
+                    <a href class="lb-post-gallery"ng-click="openGallery($index)">
                         <figure>
-                            <img lb-create-sourceset>
+                            <div ng-class="{'lb-post-image--icon': isGallery}">
+                                <img lb-create-sourceset>
+                            </div>
                             <figcaption>
                                 {{ item.meta.caption }}<span ng-if="item.meta.credit"> {{ item.meta.credit }}</span>
                             </figcaption>
@@ -242,7 +244,7 @@ Bitte f&uuml;hren Sie ein <a href="http://browsehappy.com/">Upgrade</a> durch.</
         </script>
 
         <!-- inject:js -->
-<script src="/dist/dpa-liveblog-22f3c70a51.js"></script>
+<script src="/dist/dpa-liveblog-2841866b63.js"></script>
 <!-- endinject -->     
         
     </body>
