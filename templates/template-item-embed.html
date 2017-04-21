@@ -1,1 +1,2 @@
-<div class="item--embed">{{ ref.item.meta.html | safe or ref.item.meta.meta.html | safe }}</div>
+<!-- HEADS UP: invalid markup because embedly generates rogue closing div tags -->
+<div class="item--embed"><div>{{ ref.item.meta.html | safe or ref.item.meta.meta.html | safe }}</div>

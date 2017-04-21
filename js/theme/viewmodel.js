@@ -41,6 +41,7 @@ function getPosts(opts) {
     .then(function(api_response) {
       updateViewModel(api_response, opts);
       renderPosts(api_response, opts);
+      return api_response
     })
 };
 
