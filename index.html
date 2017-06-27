@@ -26,31 +26,6 @@ Bitte f&uuml;hren Sie ein <a href="http://browsehappy.com/">Upgrade</a> durch.</
         <div class="illustration" ng-if="timeline.blog.picture_url && timeline.settings.showImage"></div>
         <p class="description" ng-if="timeline.settings.showDescription" ng-bind="timeline.blog.description"></p>
     </div>
-
-    <!-- Header -->
-    <div class="header-bar">
-        <div class="sorting-bar">
-            <div class="sorting-bar__orders">
-                <div class="sorting-bar__order"
-                    ng-class="{'sorting-bar__order--active': timeline.pagesManager.order()=='editorial'}"
-                    ng-click="timeline.orderBy('editorial')">Neueste</div>
-                <div class="sorting-bar__order"
-                    ng-class="{'sorting-bar__order--active': timeline.pagesManager.order()=='oldest_first'}"
-                    ng-click="timeline.orderBy('oldest_first')">&Auml;lteste</div>
-            </div>
-        </div>
-        <div class="header-bar__actions">
-            <div class="header-bar__highlights"
-                ng-if="timeline.settings.hasHighlights"
-                ng-class="{'header-bar__highlights--active': timeline.highlightsOnly}"
-                ng-click="timeline.toggleHighlighsOnly()"
-                tooltip-placement="bottom"
-                tooltip="{{ timeline.highlightsOnly? 'Show all posts': 'Show highlighted post only' }}">
-                Das Wichtigste
-            </div>
-        </div>
-    </div>
-    <!-- Header End -->
     
     <!-- Timeline -->
     <div class="timeline-body" ng-class="{
@@ -244,7 +219,7 @@ Bitte f&uuml;hren Sie ein <a href="http://browsehappy.com/">Upgrade</a> durch.</
         </script>
 
         <!-- inject:js -->
-<script src="/dist/dpa-liveblog-2841866b63.js"></script>
+<script src="/dist/dpa-liveblog-96d1f946bb.js"></script>
 <!-- endinject -->     
         
     </body>

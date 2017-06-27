@@ -10,6 +10,7 @@
 var angular = require("angular")
   , iframeResize = require('./iframe')
   , pageview = require('./pageview')
+  , localanalytics = require('./local-analytics')
   , metrics = require('./metrics')
   , polyfills = require("./polyfills")
   , _ = require('./lodash-custom')
@@ -38,8 +39,15 @@ module.exports = function($rootScope, $window, $timeout, resizeIframe, config) {
 
   $window.onload = function() {
     $rootScope._log.debug("ng-lb", "started");
-    pageview.init(); // Initialize pageview analytics handler
-    metrics.init(); // Initialize metrics trigger handler
+
+    /*
+    Register multiple event analytics handlers,
+    currently: sendmetric (dpa legacy event analytics), sendpageview (both local and third party)
+    */
+
+    pageview.init(); 
+    localanalytics.init();
+    metrics.init();
     
     $timeout(function() { // Initiate scrollable iframe
       if (!config.parent_resize) iframeResize.adjustBody()
