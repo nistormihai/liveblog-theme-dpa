@@ -17,6 +17,7 @@
     "browserify": "^13.0.0",
     "iframe-resizer": "^3.5.3",
     "lodash": "^4.11.1",
+    "lory.js": "^2.2.1",
     "moment": "^2.13.0",
     "ng-photoswipe": "^0.2.0",
     "photoswipe": "^4.1.1"

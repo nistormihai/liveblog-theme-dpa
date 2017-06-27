@@ -2,8 +2,8 @@
 var angular = require("angular")
   , _ = require('../lodash-custom')
   , moment = require('moment')
-  , Photoswipe = require('photoswipe/dist/photoswipe')
-  , PhotoswipeUI = require('photoswipe/dist/photoswipe-ui-default');
+  , Photoswipe = require('../photoswipe-custom')
+  , PhotoswipeUI = require('../photoswipe-ui-custom');
 
 require('moment/locale/de'); // Moment.js
 moment.locale("de"); // Set Moment.js to german
@@ -158,6 +158,7 @@ angular.module('liveblog-embed')
         options.index = scope.items[index].image_index;
         var gallery = new Photoswipe(pswpElement, PhotoswipeUI, scope.images, options);
         gallery.init();
+        setTimeout(gallery.enterFullscreen.bind(gallery), 1000);
       }
     }
   };
