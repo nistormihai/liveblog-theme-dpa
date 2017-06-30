@@ -12,31 +12,6 @@ Bitte f&uuml;hren Sie ein <a href="http://browsehappy.com/">Upgrade</a> durch.</
         <p class="description" ng-if="timeline.settings.showDescription" ng-bind="timeline.blog.description"></p>
     </div>
 
-    <!-- Header -->
-    <div class="header-bar">
-        <div class="sorting-bar">
-            <div class="sorting-bar__orders">
-                <div class="sorting-bar__order"
-                    ng-class="{'sorting-bar__order--active': timeline.pagesManager.order()=='editorial'}"
-                    ng-click="timeline.orderBy('editorial')">Neueste</div>
-                <div class="sorting-bar__order"
-                    ng-class="{'sorting-bar__order--active': timeline.pagesManager.order()=='oldest_first'}"
-                    ng-click="timeline.orderBy('oldest_first')">&Auml;lteste</div>
-            </div>
-        </div>
-        <div class="header-bar__actions">
-            <div class="header-bar__highlights"
-                ng-if="timeline.settings.hasHighlights"
-                ng-class="{'header-bar__highlights--active': timeline.highlightsOnly}"
-                ng-click="timeline.toggleHighlighsOnly()"
-                tooltip-placement="bottom"
-                tooltip="{{ timeline.highlightsOnly? 'Show all posts': 'Show highlighted post only' }}">
-                Das Wichtigste
-            </div>
-        </div>
-    </div>
-    <!-- Header End -->
-    
     <!-- Timeline -->
     <div class="timeline-body" ng-class="{
         'timeline-body--loaded': !timeline.loading,
