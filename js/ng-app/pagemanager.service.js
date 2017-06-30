@@ -60,6 +60,7 @@ function PagesManagerFactory(postsService, $q, config) {
                 sort: [SORTS[self.sort]]
             },
             page: page,
+            embedded: {"original_creator": 1},
             max_results: max_results || self.maxResults
         };
         
@@ -138,6 +139,7 @@ function PagesManagerFactory(postsService, $q, config) {
 
           , posts_criteria = {
                 page: 1,
+                embedded: {"original_creator": 1},
                 source: {
                     sort: [{_updated: {order: 'desc'}}],
                     query: {filtered: {filter: {and: [

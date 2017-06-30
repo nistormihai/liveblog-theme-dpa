@@ -74,36 +74,7 @@ Bitte f&uuml;hren Sie ein <a href="http://browsehappy.com/">Upgrade</a> durch.</
     <div class="loading" ng-show="timeline.loading">Laden</div>
     <!-- Loading End -->
 
-    <!-- Inject Photoswipe Container once, reuse -->
-    <lb-photoswipe-container></lb-photoswipe-container>
-    <!-- Photoswipe End -->
-
     <!-- Templates -->
-    <script type="text/ng-template" id="template__items">
-        <div lb-item ng-repeat="item in items track by item._id" class="lb-item">   
-            <div ng-switch="item.item_type"> <!-- Item content type switch -->
-                <div ng-switch-when="embed">
-                    <div ng-switch="item.meta.provider_name">
-                        <div ng-switch-default lb-generic-embed item="item"></div>
-                    </div>
-                </div>
-                <div ng-switch-when="image" ng-if="isFirstImage($index)" lb-bind-html">
-                    <a href class="lb-post-gallery"ng-click="openGallery($index)">
-                        <figure>
-                            <div ng-class="{'lb-post-image--icon': isGallery}">
-                                <img lb-create-sourceset>
-                            </div>
-                            <figcaption>
-                                {{ item.meta.caption }}<span ng-if="item.meta.credit"> {{ item.meta.credit }}</span>
-                            </figcaption>
-                        </figure>
-                    </a>
-                </div>
-                <article ng-switch-default lb-bind-html html-content="{{ item.text | outboundAnchors }}"></article>
-            </div>
-        </div>
-    </script>
-
     <script type="text/ng-template" id="template__generic-embed">
         <div ng-if="isEmbedCode" class="item--embed" lb-bind-html html-content="{{item.meta.html}}" load-script></div>
         <article class="item--embed">
@@ -138,13 +109,28 @@ Bitte f&uuml;hren Sie ein <a href="http://browsehappy.com/">Upgrade</a> durch.</
                     <i class="fa fa-link fa-2"></i>
                 </a>
             </div>
- 
-            <lb-items items="post.items"></lb-items>
+
+            <div lb-item ng-repeat="item in post.items track by item._id" class="lb-item">              
+                <div ng-switch="item.item_type"> <!-- Item content type switch -->
+                    <div ng-switch-when="embed">
+                        <div ng-switch="item.meta.provider_name">
+                            <div ng-switch-default lb-generic-embed item="item"></div>
+                        </div>
+                    </div>
+                    <div ng-switch-when="image" lb-bind-html">
+                        <figure>
+                            <img lb-create-sourceset>
+                            <figcaption>{{ item.meta.caption }}<span ng-if="item.meta.credit"> {{ item.meta.credit }}</span></figcaption>
+                        </figure>
+                    </div>
+                    <article ng-switch-default lb-bind-html html-content="{{ item.text | outboundAnchors }}"></article>
+                </div>
+            </div>
 
             <!-- author plus avatar  -->
             <div class="lb-author" ng-if="timeline.settings.showAuthor">
-                <img ng-if="timeline.settings.showAuthor && timeline.settings.showAuthorAvatar" class="lb-author__avatar" ng-src="{{ post.mainItem.original_creator.picture_url }}" />
-                <div class="lb-author__name" ng-bind="post.mainItem.original_creator[timeline.settings.authorNameFormat]"></div>
+                <img ng-if="timeline.settings.showAuthor && timeline.settings.showAuthorAvatar" class="lb-author__avatar" ng-src="{{ post.original_creator.picture_url }}" />
+                <div class="lb-author__name" ng-bind="post.original_creator[timeline.settings.authorNameFormat]"></div>
             </div>
 
             <div class="lb-updated-date ng-cloak" ng-show="post.showUpdate">

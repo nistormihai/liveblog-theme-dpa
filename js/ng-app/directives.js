@@ -1,9 +1,7 @@
 'use strict';
 var angular = require("angular")
   , _ = require('../lodash-custom')
-  , moment = require('moment')
-  , Photoswipe = require('photoswipe/dist/photoswipe')
-  , PhotoswipeUI = require('photoswipe/dist/photoswipe-ui-default');
+  , moment = require('moment');
 
 require('moment/locale/de'); // Moment.js
 moment.locale("de"); // Set Moment.js to german
@@ -104,70 +102,6 @@ angular.module('liveblog-embed')
       posts: '='
     },
     templateUrl: "template__postlist"
-  };
-}])
-
-.directive('lbItems', [function() {
-  return {
-    restrict: 'E',
-    scope: {
-      items: '='
-    },
-    templateUrl: "template__items",
-    link: function(scope, elem, attrs) {
-      var num_images = 0;
-      var pswpElement = document.getElementsByClassName("pswp")[0];
-
-      scope.images = [];
-
-      // Customize UI
-      var options = {
-        shareEl: false,
-        shareButtons: [
-          {id:'facebook', label:'Auf Facebook teilen', url:'https://www.facebook.com/sharer/sharer.php?u={{url}}'},
-          {id:'twitter', label:'Auf Twitter teilen', url:'https://twitter.com/intent/tweet?text={{text}}&url={{url}}'}
-        ]
-      };
-
-      for (var i = scope.items.length - 1; i >= 0; i--) {
-        var item = scope.items[i];
-
-        if (item.item_type === "image") {
-          var media = item.meta.media;
-          
-          scope.images.push({
-            w: media.renditions.baseImage.width, // image width
-            h: media.renditions.baseImage.height, // image height
-            src: media.renditions.baseImage.href, // path to image
-            msrc: media.renditions.thumbnail.href, // small image placeholder,
-            title: item.meta.caption
-          })
-
-          scope.items[i].image_index = num_images
-          ++num_images;
-        }
-      }
-
-      scope.isGallery = num_images > 0;
-
-      scope.isFirstImage = function(index) {
-        return scope.items[index].image_index === 0
-      }
-
-      scope.openGallery = function(index) {
-        options.index = scope.items[index].image_index;
-        var gallery = new Photoswipe(pswpElement, PhotoswipeUI, scope.images, options);
-        gallery.init();
-      }
-    }
-  };
-}])
-
-.directive('lbPhotoswipeContainer', [function() {
-  return {
-    restrict: 'E',
-    scope: {},
-    templateUrl: window.LB.assets_root + "views/photoswipe.html"
   };
 }])
 

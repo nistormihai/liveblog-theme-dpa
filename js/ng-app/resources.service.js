@@ -61,10 +61,14 @@ function Posts($resource, config, users) {
   function _completeUser(obj) {
       if (obj.commenter) {
           obj.original_creator = {display_name: obj.commenter};
-      } else if(obj.original_creator !== "" && obj.original_creator !== 'None'){
-          users.get({userId: obj.original_creator}, function(user) {
-              obj.original_creator = user._items? user._items[0] : user;
-          });
+      } else if(obj.original_creator !== "" && obj.original_creator !== 'None') {
+        if (typeof(obj.original_creator) === "object") {
+          return obj
+        }
+
+        users.get({ userId: obj.original_creator }, function(user) {
+          obj.original_creator = user._items ? user._items[0] : user;
+        });
       }
       return obj;
   };
