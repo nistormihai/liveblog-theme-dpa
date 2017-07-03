@@ -6,12 +6,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <!-- inject:css -->
-        <link rel="stylesheet" href="/dist/dpa-liveblog-1d36bccbd1.css">
+        <link rel="stylesheet" href="/dist/dpa-liveblog-895f64afba.css">
         <!-- endinject -->
     </head>
 
     <body>
         <!-- inject:template -->
+       
        
         <!--[if lt IE 10]>
 <p>Sie benutzen einen <strong>veralteten</strong> und m&ouml;glicherweise unsicheren Browser. 
@@ -27,31 +28,6 @@ Bitte f&uuml;hren Sie ein <a href="http://browsehappy.com/">Upgrade</a> durch.</
         <p class="description" ng-if="timeline.settings.showDescription" ng-bind="timeline.blog.description"></p>
     </div>
 
-    <!-- Header -->
-    <div class="header-bar">
-        <div class="sorting-bar">
-            <div class="sorting-bar__orders">
-                <div class="sorting-bar__order"
-                    ng-class="{'sorting-bar__order--active': timeline.pagesManager.order()=='editorial'}"
-                    ng-click="timeline.orderBy('editorial')">Neueste</div>
-                <div class="sorting-bar__order"
-                    ng-class="{'sorting-bar__order--active': timeline.pagesManager.order()=='oldest_first'}"
-                    ng-click="timeline.orderBy('oldest_first')">&Auml;lteste</div>
-            </div>
-        </div>
-        <div class="header-bar__actions">
-            <div class="header-bar__highlights"
-                ng-if="timeline.settings.hasHighlights"
-                ng-class="{'header-bar__highlights--active': timeline.highlightsOnly}"
-                ng-click="timeline.toggleHighlighsOnly()"
-                tooltip-placement="bottom"
-                tooltip="{{ timeline.highlightsOnly? 'Show all posts': 'Show highlighted post only' }}">
-                Das Wichtigste
-            </div>
-        </div>
-    </div>
-    <!-- Header End -->
-    
     <!-- Timeline -->
     <div class="timeline-body" ng-class="{
         'timeline-body--loaded': !timeline.loading,
@@ -144,8 +120,8 @@ Bitte f&uuml;hren Sie ein <a href="http://browsehappy.com/">Upgrade</a> durch.</
 
             <!-- author plus avatar  -->
             <div class="lb-author" ng-if="timeline.settings.showAuthor">
-                <img ng-if="timeline.settings.showAuthor && timeline.settings.showAuthorAvatar" class="lb-author__avatar" ng-src="{{ post.mainItem.original_creator.picture_url }}" />
-                <div class="lb-author__name" ng-bind="post.mainItem.original_creator[timeline.settings.authorNameFormat]"></div>
+                <img ng-if="timeline.settings.showAuthor && timeline.settings.showAuthorAvatar" class="lb-author__avatar" ng-src="{{ post.original_creator.picture_url }}" />
+                <div class="lb-author__name" ng-bind="post.original_creator[timeline.settings.authorNameFormat]"></div>
             </div>
 
             <div class="lb-updated-date ng-cloak" ng-show="post.showUpdate">
@@ -167,6 +143,7 @@ Bitte f&uuml;hren Sie ein <a href="http://browsehappy.com/">Upgrade</a> durch.</
    
 </div>
 
+       
        
         <!-- endinject -->
 
@@ -230,7 +207,7 @@ Bitte f&uuml;hren Sie ein <a href="http://browsehappy.com/">Upgrade</a> durch.</
         </script>
 
         <!-- inject:js -->
-<script src="/dist/dpa-liveblog-b20b00be18.js"></script>
+<script src="/dist/dpa-liveblog-dd70470d5b.js"></script>
 <!-- endinject -->     
         
     </body>
