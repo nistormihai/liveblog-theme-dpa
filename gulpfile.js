@@ -55,10 +55,16 @@ gulp.task('browserify', ['clean-js'], function() {
     .pipe(buffer())
     .pipe(plugins.rev())
     .pipe(plugins.ngAnnotate())
-    .pipe(plugins.if(!DEBUG, plugins.uglify()))
+    .pipe(plugins.if(!DEBUG,
+      plugins.uglify()
+        .on('error', function(e){
+          console.log(e);
+        })
+    ))
     .pipe(gulp.dest('./dist/'))
     .pipe(plugins.rev.manifest('dist/rev-manifest.json', {merge: true}))
-    .pipe(gulp.dest(''));
+    .pipe(gulp.dest(''))
+
 });
 
 // Compile LESS files
