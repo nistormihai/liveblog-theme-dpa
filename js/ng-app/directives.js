@@ -1,5 +1,6 @@
 'use strict';
-var angular = require("angular")
+var angular = require('angular')
+  , carousel  = require('angular-carousel')
   , _ = require('../lodash-custom')
   , moment = require('moment');
 
@@ -65,7 +66,7 @@ angular.module('liveblog-embed')
   return {
     restrict: 'A',
     link: function(scope, elem, attrs) {
-      var meta = scope.item.meta
+      var meta = scope.image.meta
         , srcset = 'bi 810w, th 240w, vi 540w'
         , mapObj = {
             bi: meta.media.renditions.baseImage.href,
@@ -102,6 +103,52 @@ angular.module('liveblog-embed')
       posts: '='
     },
     templateUrl: "template__postlist"
+  };
+}])
+
+.directive('lbItems', [function() {
+  return {
+    restrict: 'E',
+    scope: {
+      items: '='
+    },
+    templateUrl: "template__items",
+    link: function(scope, elem, attrs) {
+      var num_images = 0
+      scope.imagesIndex = 0;
+      scope.images = [];
+
+      for (var i = scope.items.length - 1; i >= 0; i--) {
+        var item = scope.items[i];
+
+        if (item.item_type === "image") {
+          var media = item.meta.media;
+          
+          scope.images.push({
+            w: media.renditions.baseImage.width, // image width
+            h: media.renditions.baseImage.height, // image height
+            src: media.renditions.baseImage.href, // path to image
+            msrc: media.renditions.thumbnail.href, // small image placeholder,
+            title: item.meta.caption,
+            meta: item.meta
+          })
+
+          scope.items[i].image_index = num_images
+          ++num_images;
+        }
+      }
+
+      scope.isGallery = num_images > 0;
+
+      scope.isFirstImage = function(index) {
+        return scope.items[index].image_index === 0
+      }
+
+      scope.openGallery = function(index) {
+        //options.index = scope.items[index].image_index;
+        return true
+      }
+    }
   };
 }])
 

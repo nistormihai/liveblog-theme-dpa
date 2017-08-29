@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <!-- inject:css -->
-        <link rel="stylesheet" href="/dist/dpa-liveblog-895f64afba.css">
+        <link rel="stylesheet" href="/dist/dpa-liveblog-72fcc4dbf2.css">
         <!-- endinject -->
     </head>
 
@@ -64,6 +64,35 @@ Bitte f&uuml;hren Sie ein <a href="http://browsehappy.com/">Upgrade</a> durch.</
     <!-- Loading End -->
 
     <!-- Templates -->
+    <script type="text/ng-template" id="template__items">
+        <div lb-item ng-repeat="item in items track by item._id" class="lb-item">
+            <div ng-switch="item.item_type">
+                <div ng-switch-when="embed">
+                    <div lb-generic-embed item="item"></div>
+                </div>
+                <div ng-switch-when="image"></div>
+                <div ng-switch-default>
+                    <article lb-bind-html html-content="{{ item.text | outboundAnchors }}"></article>
+                </div>
+            </div>
+        </div>
+        <ul ng-if="images.length" rn-carousel rn-carousel-controls rn-carousel-index="imagesIndex" class="lb-image">
+            <li ng-repeat="image in images track by image.src">
+                <figure>
+                    <div ng-class="{'lb-post-image--icon': isGallery, 'image__item': true}" style="background-image: url({{image.src}})">
+                        <!-- <img lb-create-sourceset> -->
+                    </div>
+                    <figcaption>
+                        {{ image.meta.caption }}
+                        <span ng-if="item.meta.credit">
+                            {{ image.meta.credit }}
+                        </span>
+                    </figcaption>
+                </figure>
+            </li>
+        </ul>
+    </script>
+
     <script type="text/ng-template" id="template__generic-embed">
         <div ng-if="isEmbedCode" class="item--embed" lb-bind-html html-content="{{item.meta.html}}" load-script></div>
         <article class="item--embed">
@@ -99,22 +128,7 @@ Bitte f&uuml;hren Sie ein <a href="http://browsehappy.com/">Upgrade</a> durch.</
                 </a>
             </div>
 
-            <div lb-item ng-repeat="item in post.items track by item._id" class="lb-item">              
-                <div ng-switch="item.item_type"> <!-- Item content type switch -->
-                    <div ng-switch-when="embed">
-                        <div ng-switch="item.meta.provider_name">
-                            <div ng-switch-default lb-generic-embed item="item"></div>
-                        </div>
-                    </div>
-                    <div ng-switch-when="image" lb-bind-html">
-                        <figure>
-                            <img lb-create-sourceset>
-                            <figcaption>{{ item.meta.caption }}<span ng-if="item.meta.credit"> {{ item.meta.credit }}</span></figcaption>
-                        </figure>
-                    </div>
-                    <article ng-switch-default lb-bind-html html-content="{{ item.text | outboundAnchors }}"></article>
-                </div>
-            </div>
+            <lb-items items="post.items"></lb-items>
 
             <!-- author plus avatar  -->
             <div class="lb-author" ng-if="timeline.settings.showAuthor">
@@ -203,7 +217,7 @@ Bitte f&uuml;hren Sie ein <a href="http://browsehappy.com/">Upgrade</a> durch.</
         </script>
 
         <!-- inject:js -->
-        <script src="/dist/dpa-liveblog-af85118532.js"></script>
+        <script src="/dist/dpa-liveblog-afaf15ec69.js"></script>
         <!-- endinject -->     
         
     </body>

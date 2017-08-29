@@ -3,6 +3,7 @@
 // Node modules
 require('angular');
 require('angular-cache')
+require('angular-touch')
 require('angular-route/angular-route');
 require('angular-animate/angular-animate');
 require('angular-resource/angular-resource');
@@ -13,7 +14,9 @@ require('iframe-resizer')
 // Angular base theme
 angular.module('liveblog-embed', [
   'ngResource',
-  'angular-cache'
+  'ngTouch',
+  'angular-cache',
+  'angular-carousel'
   ])
 
   .constant('config', {
