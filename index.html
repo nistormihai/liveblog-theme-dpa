@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <!-- inject:css -->
-        <link rel="stylesheet" href="/dist/dpa-liveblog-b790d6c06f.css">
+        <link rel="stylesheet" href="/dist/dpa-liveblog-e04c3e1566.css">
         <!-- endinject -->
     </head>
 
@@ -137,7 +137,7 @@ Bitte f&uuml;hren Sie ein <a href="http://browsehappy.com/">Upgrade</a> durch.</
             <lb-items items="post.items"></lb-items>
 
             <!-- author plus avatar  -->
-            <div class="lb-author" ng-if="timeline.settings.showAuthor">
+            <div class="lb-author" ng-if="timeline.settings.showAuthor && !post.sticky">
                 <img ng-if="timeline.settings.showAuthor && timeline.settings.showAuthorAvatar" class="lb-author__avatar" ng-src="{{ post.original_creator.picture_url }}" />
                 <div class="lb-author__name" ng-bind="post.original_creator[timeline.settings.authorNameFormat]"></div>
             </div>
@@ -153,7 +153,7 @@ Bitte f&uuml;hren Sie ein <a href="http://browsehappy.com/">Upgrade</a> durch.</
     <img name="pixelcounter" style="width: 1px; height: 1px; visibility:hidden;">
     <script type="text/javascript">
         var pixel = document.getElementsByName('pixelcounter')[0];
-        var pixel_src = "https://dq4xjmopyzaan.cloudfront.net/pixel.gif";
+        var pixel_src = "https://d2ccqtgoww9rwc.cloudfront.net/pixel.gif";
         pixel.src = pixel_src + '?r='+ encodeURIComponent(document.referrer)
             + '&l='+ encodeURIComponent(document.location);
     </script>
@@ -223,7 +223,7 @@ Bitte f&uuml;hren Sie ein <a href="http://browsehappy.com/">Upgrade</a> durch.</
         </script>
 
         <!-- inject:js -->
-        <script src="/dist/dpa-liveblog-d09275f62f.js"></script>
+        <script src="/dist/dpa-liveblog-cb606fc99f.js"></script>
         <!-- endinject -->     
         
     </body>

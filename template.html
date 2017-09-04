@@ -123,7 +123,7 @@ Bitte f&uuml;hren Sie ein <a href="http://browsehappy.com/">Upgrade</a> durch.</
             <lb-items items="post.items"></lb-items>
 
             <!-- author plus avatar  -->
-            <div class="lb-author" ng-if="timeline.settings.showAuthor">
+            <div class="lb-author" ng-if="timeline.settings.showAuthor && !post.sticky">
                 <img ng-if="timeline.settings.showAuthor && timeline.settings.showAuthorAvatar" class="lb-author__avatar" ng-src="{{ post.original_creator.picture_url }}" />
                 <div class="lb-author__name" ng-bind="post.original_creator[timeline.settings.authorNameFormat]"></div>
             </div>
@@ -139,7 +139,7 @@ Bitte f&uuml;hren Sie ein <a href="http://browsehappy.com/">Upgrade</a> durch.</
     <img name="pixelcounter" style="width: 1px; height: 1px; visibility:hidden;">
     <script type="text/javascript">
         var pixel = document.getElementsByName('pixelcounter')[0];
-        var pixel_src = "https://dq4xjmopyzaan.cloudfront.net/pixel.gif";
+        var pixel_src = "https://d2ccqtgoww9rwc.cloudfront.net/pixel.gif";
         pixel.src = pixel_src + '?r='+ encodeURIComponent(document.referrer)
             + '&l='+ encodeURIComponent(document.location);
     </script>

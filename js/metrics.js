@@ -13,7 +13,7 @@ var sendMetric = {
     var pixel = new Image()
       , randString = String(Math.random())
       , hash = randString.substr(randString.length-10) // cache-buster
-      , pixel_src = "https://dq4xjmopyzaan.cloudfront.net/pixel.gif"
+      , pixel_src = "https://d2ccqtgoww9rwc.cloudfront.net/pixel.gif"
       , metricName = customEvent.detail.action;
 
     pixel.src = pixel_src + '?a='+ encodeURIComponent(metricName) + "&hash=" + hash;
