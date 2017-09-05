@@ -66,7 +66,7 @@ angular.module('liveblog-embed')
   return {
     restrict: 'A',
     link: function(scope, elem, attrs) {
-      var meta = scope.image.meta
+      var meta = scope.item.meta
         , srcset = 'bi 810w, th 240w, vi 540w'
         , mapObj = {
             bi: meta.media.renditions.baseImage.href,
@@ -138,7 +138,8 @@ angular.module('liveblog-embed')
         }
       }
 
-      scope.isGallery = num_images > 0;
+      scope.images.reverse()
+      scope.isGallery = num_images > 1;
 
       scope.isFirstImage = function(index) {
         return scope.items[index].image_index === 0

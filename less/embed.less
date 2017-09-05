@@ -23,9 +23,10 @@
 }
 
 .timeline-body {
-    position: relative;
-    opacity: 1;
-    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAABCAQAAABTNcdGAAAADUlEQVR42mN8/Z8BDAAOYwHsa419tgAAAABJRU5ErkJggg==') 30px repeat-y;
+  position: relative;
+  opacity: 1;
+  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAABCAQAAABTNcdGAAAADUlEQVR42mN8/Z8BDAAOYwHsa419tgAAAABJRU5ErkJggg==') 31px repeat-y;
+  background-size: 0.3%;
 }
 
 // Header Bar
@@ -230,7 +231,7 @@ article.lb-post:after {
     margin-right: 40px;
     bottom: 0px;
     height: 2px;
-    background-color: #f7f7f7;
+    background-color: #f9f9f9;
 }
 
 .lb-postlist > .lb-post:last-of-type:after {
@@ -251,6 +252,12 @@ article.lb-post:after {
 
 .lb-postlist--stickyposts > article:last-of-type {
   padding-bottom: 90px;
+}
+
+@media @small {
+  .lb-postlist--stickyposts > article:last-of-type {
+    padding-bottom: 45px;
+  }
 }
 
 @media @small {
@@ -348,7 +355,12 @@ article.lb-post:after {
 
 .lb-type--sticky {
   background-color: #A0A0A0;
-  margin-top: 4px;
+  background-image: url("../images/sticky.png");
+  background-size: 20px;
+  margin-left: -18px;
+  margin-top: -10px;
+  width: 40px;
+  height: 40px;
 }
 
 .lb-type--embed {
@@ -412,7 +424,7 @@ article.lb-post:after {
   position: absolute;
   left: 50%;
   margin-left: -75px;
-  padding: 6px 14px;
+  padding: 8px 14px;
   width: 150px;
   margin-top: 60px;
 }
@@ -558,8 +570,8 @@ article.lb-post:after {
     background-clip: border-box;
     position: absolute;
     margin-top: -12px;
+    margin-left: -10px;
     padding: 5px;
-    left: -11px;
     width: 16px;
     height: 16px;
     color: #f89406;
@@ -568,7 +580,7 @@ article.lb-post:after {
 
 .lb-post-highlighted {
   background-image: url("../images/star_highlight.svg");
-  background-color: #F05330;
+  background-color: #fa8e76;
 }
 
 .lb-post-sticky {
@@ -708,15 +720,13 @@ article.lb-post:after {
 
     .lb-post-highlighted,
     .lb-post-sticky {
-      background-size: 10px;
+      background-size: 0px;
       background-position-y: 4px;
-      padding: 4px;
+      padding: 0px;
       float: left;
-      left: 16px;
       display: inline-block;
-      position: relative;
-      width: 10px;
-      height: 10px;
+      width: 12px;
+      height: 12px;
       margin: -8px 4px 0 6px;
     }
 
@@ -800,6 +810,6 @@ article.lb-post:after {
     }
 
     .lb-post-highlighted {
-        margin: -10px 8px 0 6px;
+        margin: -7px 0px 0 0px;
     }
 }

@@ -1,7 +1,7 @@
 {
-  "name": "liveblog-theme-dpa",
-  "version": "0.10.6",
-  "description": "dpa-Liveblog base theme",
+  "name": "liveblog-theme-dpa-beta",
+  "version": "0.13.2b",
+  "description": "dpa-liveblog theme",
   "author": "Paul Solbach <psolbach@dpa-newslab.com>",
   "license": "UNLICENSED",
   "main": "dist/dpa-liveblog.js",

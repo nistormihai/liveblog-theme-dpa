@@ -62,13 +62,20 @@ Bitte f&uuml;hren Sie ein <a href="http://browsehappy.com/">Upgrade</a> durch.</
                 <div ng-switch-when="embed">
                     <div lb-generic-embed item="item"></div>
                 </div>
-                <div ng-switch-when="image"></div>
+                <div ng-switch-when="image" ng-if="!isGallery">
+                    <figure>
+                        <img lb-create-sourceset>
+                        <figcaption>{{ item.meta.caption }}
+                            <span ng-if="item.meta.credit"> {{ item.meta.credit }}</span>
+                        </figcaption>
+                    </figure>
+                </div>
                 <div ng-switch-default>
                     <article lb-bind-html html-content="{{ item.text | outboundAnchors }}"></article>
                 </div>
             </div>
         </div>
-        <ul ng-if="images.length" rn-carousel rn-carousel-controls rn-carousel-index="imagesIndex" class="lb-image">
+        <ul ng-if="isGallery" rn-carousel rn-carousel-controls rn-carousel-index="imagesIndex" class="lb-image">
             <li ng-repeat="image in images track by image.src">
                 <figure>
                     <div ng-class="{'lb-post-image--icon': isGallery, 'image__item': true}" style="background-image: url({{image.src}})">
@@ -101,6 +108,7 @@ Bitte f&uuml;hren Sie ein <a href="http://browsehappy.com/">Upgrade</a> durch.</
             
             <div class="lb-type" ng-class="{
                 'lb-type--sticky': post.sticky,
+                'lb-post-highlighted': post.lb_highlight == true,
                 'lb-type--text': !post.mainEmbed && !post.sticky,
                 'lb-type--embed lb-type--twitter': post.mainEmbed == 'Twitter',
                 'lb-type--embed lb-type--instagram': post.mainEmbed == 'Instagram',
