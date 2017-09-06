@@ -103,12 +103,14 @@ Bitte f&uuml;hren Sie ein <a href="http://browsehappy.com/">Upgrade</a> durch.</
         <article lb-post ng-repeat="post in posts() track by post._id"
             class="lb-post list-group-item ng-cloak"
             ng-class="{
+                'lb-postlist-sticky': post.sticky,
+                'lb-post-highlight': post.lb_highlight == true,
                 'show-author-avatar': timeline.settings.showAuthor && timeline.settings.showAuthorAvatar,
                 'lb-post-permalink-selected': post._id === timeline.permalink._id}">
             
             <div class="lb-type" ng-class="{
                 'lb-type--sticky': post.sticky,
-                'lb-post-highlighted': post.lb_highlight == true,
+                'lb-type--highlighted': post.lb_highlight == true,
                 'lb-type--text': !post.mainEmbed && !post.sticky,
                 'lb-type--embed lb-type--twitter': post.mainEmbed == 'Twitter',
                 'lb-type--embed lb-type--instagram': post.mainEmbed == 'Instagram',

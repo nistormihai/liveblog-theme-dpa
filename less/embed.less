@@ -238,9 +238,9 @@ article.lb-post:after {
     display: none;
 }
 
-.lb-postlist .lb-post:first-of-type {
-  padding-top: 0;
-}
+// .lb-postlist .lb-post:first-of-type {
+//   padding-top: 0;
+// }
 
 .lb-postlist--stickyposts article {
   background-color: #ffffff;
@@ -252,6 +252,7 @@ article.lb-post:after {
 
 .lb-postlist--stickyposts > article:last-of-type {
   padding-bottom: 90px;
+  margin-bottom: -50px;
 }
 
 @media @small {
@@ -354,7 +355,8 @@ article.lb-post:after {
 }
 
 .lb-type--sticky {
-  background-color: #A0A0A0;
+  visibility: hidden;
+  background-color: #544545;
   background-image: url("../images/sticky.png");
   background-size: 20px;
   margin-left: -18px;
@@ -393,6 +395,10 @@ article.lb-post:after {
   background-color: #000;
   background-image: url("../images/fb_logo_white.png");
   background-size: 20px;
+}
+
+.lb-postlist-sticky {
+  margin-top: -20px !important;
 }
     
 
@@ -562,7 +568,7 @@ article.lb-post:after {
 }
 
 .lb-post-sticky,
-.lb-post-highlighted {
+.lb-type--highlighted {
     background-size: 15px;
     border-radius: 4px;
     background-repeat: no-repeat;
@@ -578,9 +584,9 @@ article.lb-post:after {
     opacity: 1;
 }
 
-.lb-post-highlighted {
+.lb-type--highlighted {
   background-image: url("../images/star_highlight.svg");
-  background-color: #fa8e76;
+  background-color: #ec9f8f;
 }
 
 .lb-post-sticky {
@@ -718,7 +724,7 @@ article.lb-post:after {
         padding-left: 0 !important;
     }
 
-    .lb-post-highlighted,
+    .lb-type--highlighted,
     .lb-post-sticky {
       background-size: 0px;
       background-position-y: 4px;
@@ -809,7 +815,7 @@ article.lb-post:after {
         margin-top: 1px;
     }
 
-    .lb-post-highlighted {
+    .lb-type--highlighted {
         margin: -7px 0px 0 0px;
     }
 }
