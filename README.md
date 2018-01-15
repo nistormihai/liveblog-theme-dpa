@@ -5,7 +5,7 @@ allow debugging the theme in isolation without the Liveblog Environment.
 Downside is we can't just merge upstream commits. Other changes e.g. convert to Browserify, throw out JQuery and i18n data, modular lodash require.
 
 ## Development
-Just issue a `npm i` followed by `gulp`.
+Just issue a `npm i` followed by `gulp debug && gulp watch` for automated re-building.
 Assets are then bundled into single .js and .css files, an index.html is generated
 for debugging purposes by injecting hardcoded settings around `template.html` -- emulating
 what would normally be handled by Liveblog Server.
