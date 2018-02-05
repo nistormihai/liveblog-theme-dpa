@@ -1,7 +1,7 @@
 {
-    "label": "dpa Liveblog Theme",
+    "label": "dpa Liveblog Theme 0.12.2",
     "name": "liveblog-theme-dpa",
-    "version": "0.12.1",
+    "version": "0.12.2",
     "author": "Paul Solbach <psolbach@dpa-newslab.com>",
     "repository": {
         "type" : "git",
