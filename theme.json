@@ -8,8 +8,13 @@
         "url" : "git@github.com:dpa-newslab/liveblog-theme-dpa"
     },
     "license": "UNLICENSED",
+<<<<<<< HEAD
     "styles": ["dist/dpa-liveblog-52541f5de0.css"],
     "scripts": ["dist/dpa-liveblog-9d9a7111ca.js"],
+=======
+    "styles": ["dist/dpa-liveblog-85f5e4a352.css"],
+    "scripts": ["dist/dpa-liveblog-1165884948.js"],
+>>>>>>> 993d191e8440f56954472d183330855d4d901d9f
     "options": [
         {
             "name": "language",
