@@ -12,6 +12,9 @@ make:
 		-x "index.html" \
 		-x "gulpfile.js" \
 		-x "npm-shrinkwrap.json" \
+		-x "npm-shrinkwrap.json" \
+		-x "*.DS_Store*" \
+		-x "liveblog-theme-dpa" \
 		-x "embedcode.html"
 
 clean:

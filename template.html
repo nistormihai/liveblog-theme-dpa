@@ -90,12 +90,14 @@ Bitte f&uuml;hren Sie ein <a href="http://browsehappy.com/">Upgrade</a> durch.</
                 </figure>
             </li>
         </ul>
+        <div class="lb-image--index" ng-if="isGallery">{{ imagesIndex + 1 }}/{{ images.length }}</div>
+        <div class="lb-image--indicator" ng-if="isGallery" rn-carousel-indicators slides="images" rn-carousel-index="imagesIndex"></div>
     </script>
 
     <script type="text/ng-template" id="template__generic-embed">
         <div ng-if="isEmbedCode" class="item--embed" lb-bind-html html-content="{{item.meta.html}}" load-script></div>
-        <article class="item--embed">
-            <img ng-if="!isEmbedCode && item.meta.thumbnail_url" ng-src="{{ item.meta.thumbnail_url }}" class="item--embed__illustration"/>
+        <article ng-if="!isEmbedCode && item.meta.thumbnail_url" class="item--embed">
+            <img ng-src="{{ item.meta.thumbnail_url }}" class="item--embed__illustration"/>
         </article>
     </script>
 
@@ -112,10 +114,10 @@ Bitte f&uuml;hren Sie ein <a href="http://browsehappy.com/">Upgrade</a> durch.</
                 'lb-type--sticky': post.sticky,
                 'lb-type--highlighted': post.lb_highlight == true,
                 'lb-type--text': !post.mainEmbed && !post.sticky,
-                'lb-type--embed lb-type--twitter': post.mainEmbed == 'Twitter',
-                'lb-type--embed lb-type--instagram': post.mainEmbed == 'Instagram',
-                'lb-type--embed lb-type--youtube': post.mainEmbed == 'YouTube',
-                'lb-type--embed lb-type--facebook': post.mainEmbed == 'Facebook'
+                'lb-type--embed lb-type--twitter': post.mainEmbed == 'Twitter' && !post.lb_highlight,
+                'lb-type--embed lb-type--instagram': post.mainEmbed == 'Instagram' && !post.lb_highlight,
+                'lb-type--embed lb-type--youtube': post.mainEmbed == 'YouTube' && !post.lb_highlight,
+                'lb-type--embed lb-type--facebook': post.mainEmbed == 'Facebook' && !post.lb_highlight
                 }">
             </div>
 

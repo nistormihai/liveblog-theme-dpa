@@ -1,7 +1,7 @@
 'use strict';
 var angular = require('angular')
   , pageview = require('../pageview')
-  , _ = require('../lodash-custom');
+  , _ = require('../adapted/lodash-custom');
 
 angular.module('theme')
 .controller('TimelineCtrl', [

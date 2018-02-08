@@ -251,7 +251,7 @@ article.lb-post:after {
 }
 
 .lb-postlist--stickyposts > article:last-of-type {
-  padding-bottom: 90px;
+  padding-bottom: 60px;
   margin-bottom: -50px;
 }
 
@@ -441,6 +441,8 @@ article.lb-post:after {
   right: 0;
 }
 
+
+
 // Load New Post End
 
 // Author
@@ -567,8 +569,7 @@ article.lb-post:after {
     visibility: hidden;
 }
 
-.lb-post-sticky,
-.lb-type--highlighted {
+.lb-post-sticky {
     background-size: 15px;
     border-radius: 4px;
     background-repeat: no-repeat;
@@ -585,8 +586,18 @@ article.lb-post:after {
 }
 
 .lb-type--highlighted {
-  background-image: url("../images/star_highlight.svg");
-  background-color: #ec9f8f;
+  background-image: none;
+  // background-color: #ec9f8f;
+}
+
+.lb-type--highlighted.lb-type {
+  width: 16px;
+  height: 16px;
+}
+
+.lb-post-highlight article:first-of-type {
+  background-color: #f9fbde;
+  padding: 15px;
 }
 
 .lb-post-sticky {
@@ -597,6 +608,37 @@ article.lb-post:after {
 
 .lb-post:hover .lb-post-permalink {
     visibility: visible;
+}
+
+.lb-image--index {
+  display: none;
+  text-align: right;
+  position: absolute;
+  right: -15px;
+  margin-top: -65px;
+  font-size: .7em;
+  font-weight: 500;
+  color: #acacac;
+}
+
+@media @medium {
+  .lb-image--index {
+    right: 15px;
+  }
+}
+
+.lb-image--indicator {
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  left: 45px;
+  margin-top: -105px;
+}
+
+@media @medium {
+  .lb-image--indicator {
+    left: 0px;
+  }
 }
 
 /* pinned posts */

@@ -13,7 +13,7 @@ var angular = require("angular")
   , localanalytics = require('./local-analytics')
   , metrics = require('./metrics')
   , polyfills = require("./polyfills")
-  , _ = require('./lodash-custom')
+  , _ = require('./adapted/lodash-custom')
   , _log = require("./log");
 
 

@@ -1,7 +1,7 @@
 'use strict';
 var angular = require("angular")
   , moment = require('moment')
-  , _ = require('../lodash-custom');
+  , _ = require('../adapted/lodash-custom');
 
 angular.module('liveblog-embed')
 .factory('PagesManager', ['posts', '$q', 'config', PagesManagerFactory]);

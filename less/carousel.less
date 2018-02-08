@@ -15,7 +15,7 @@ ul[rn-carousel] {
 .rn-carousel-control {
   color: #ffffff;
   font-size: 1rem;
-  background-color: rgba(0,0,0,.5);
+  background-color: rgba(0,0,0,.75);
   padding: 8px 10px;
   width: 20px;
   height: 20px;
@@ -30,19 +30,31 @@ ul[rn-carousel] {
 }
 
 .rn-carousel-control.rn-carousel-control-next:before {
-  content: "\25ba";
-  position: absolute;
-  font-size: .6em;
-  margin-left: .3em;
-  line-height: 2em;
+  content: "›";
+  font-family: "Arial";
+  font-size: 2em;
+  font-weight: 600;
+  line-height: 0.5em;
+  position: relative;
+  right: -5px;
 }
 
 .rn-carousel-control.rn-carousel-control-prev:before {
-  content: "\25c4";
-  position: absolute;
-  font-size: .6em;
-  margin-left: .3em;
-  line-height: 2em;
+  content: "‹";
+  font-family: "Arial";
+  font-size: 2em;
+  font-weight: 600;
+  line-height: 0.5em;
+  position: relative;
+  right: -5px;
+}
+
+div.rn-carousel-indicator span {
+  color: rgba(0,0,0,.7);
+}
+
+div.rn-carousel-indicator span.active {
+  color: #ffffff;
 }
 
 @media @minmedium {

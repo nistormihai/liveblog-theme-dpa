@@ -1,7 +1,7 @@
 'use strict';
 var angular = require('angular')
-  , carousel  = require('angular-carousel')
-  , _ = require('../lodash-custom')
+  , carousel  = require('../adapted/angular-carousel')
+  , _ = require('../adapted/lodash-custom')
   , moment = require('moment');
 
 require('moment/locale/de'); // Moment.js
@@ -123,11 +123,11 @@ angular.module('liveblog-embed')
 
         if (item.item_type === "image") {
           var media = item.meta.media;
-          
+
           scope.images.push({
-            w: media.renditions.baseImage.width, // image width
-            h: media.renditions.baseImage.height, // image height
-            src: media.renditions.baseImage.href, // path to image
+            w: media.renditions.viewImage.width, // image width
+            h: media.renditions.viewImage.height, // image height
+            src: media.renditions.viewImage.href, // path to image
             msrc: media.renditions.thumbnail.href, // small image placeholder,
             title: item.meta.caption,
             meta: item.meta

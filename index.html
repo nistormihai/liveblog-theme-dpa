@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <!-- inject:css -->
-        <link rel="stylesheet" href="/dist/dpa-liveblog-36a00a4a44.css">
+        <link rel="stylesheet" href="/dist/dpa-liveblog-723c0b7ca1.css">
         <!-- endinject -->
     </head>
 
@@ -104,12 +104,14 @@ Bitte f&uuml;hren Sie ein <a href="http://browsehappy.com/">Upgrade</a> durch.</
                 </figure>
             </li>
         </ul>
+        <div class="lb-image--index" ng-if="isGallery">{{ imagesIndex + 1 }}/{{ images.length }}</div>
+        <div class="lb-image--indicator" ng-if="isGallery" rn-carousel-indicators slides="images" rn-carousel-index="imagesIndex"></div>
     </script>
 
     <script type="text/ng-template" id="template__generic-embed">
         <div ng-if="isEmbedCode" class="item--embed" lb-bind-html html-content="{{item.meta.html}}" load-script></div>
-        <article class="item--embed">
-            <img ng-if="!isEmbedCode && item.meta.thumbnail_url" ng-src="{{ item.meta.thumbnail_url }}" class="item--embed__illustration"/>
+        <article ng-if="!isEmbedCode && item.meta.thumbnail_url" class="item--embed">
+            <img ng-src="{{ item.meta.thumbnail_url }}" class="item--embed__illustration"/>
         </article>
     </script>
 
@@ -126,10 +128,10 @@ Bitte f&uuml;hren Sie ein <a href="http://browsehappy.com/">Upgrade</a> durch.</
                 'lb-type--sticky': post.sticky,
                 'lb-type--highlighted': post.lb_highlight == true,
                 'lb-type--text': !post.mainEmbed && !post.sticky,
-                'lb-type--embed lb-type--twitter': post.mainEmbed == 'Twitter',
-                'lb-type--embed lb-type--instagram': post.mainEmbed == 'Instagram',
-                'lb-type--embed lb-type--youtube': post.mainEmbed == 'YouTube',
-                'lb-type--embed lb-type--facebook': post.mainEmbed == 'Facebook'
+                'lb-type--embed lb-type--twitter': post.mainEmbed == 'Twitter' && !post.lb_highlight,
+                'lb-type--embed lb-type--instagram': post.mainEmbed == 'Instagram' && !post.lb_highlight,
+                'lb-type--embed lb-type--youtube': post.mainEmbed == 'YouTube' && !post.lb_highlight,
+                'lb-type--embed lb-type--facebook': post.mainEmbed == 'Facebook' && !post.lb_highlight
                 }">
             </div>
 
@@ -233,7 +235,7 @@ Bitte f&uuml;hren Sie ein <a href="http://browsehappy.com/">Upgrade</a> durch.</
         </script>
 
         <!-- inject:js -->
-        <script src="/dist/dpa-liveblog-1dd4a0a5a2.js"></script>
+        <script src="/dist/dpa-liveblog-99c38030b0.js"></script>
         <!-- endinject -->     
         
     </body>

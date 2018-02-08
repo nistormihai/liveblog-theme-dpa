@@ -1,15 +1,15 @@
 {
-    "label": "dpa Liveblog Theme Test",
-    "name": "liveblog-theme-dpa-test",
-    "version": "0.13.4b",
+    "label": "dpa Liveblog Theme",
+    "name": "liveblog-theme-dpa",
+    "version": "0.13.12",
     "author": "Paul Solbach <psolbach@dpa-newslab.com>",
     "repository": {
         "type" : "git",
         "url" : "git@github.com:dpa-newslab/liveblog-theme-dpa"
     },
     "license": "UNLICENSED",
-    "styles": ["dist/dpa-liveblog-79ca1eb7b4.css"],
-    "scripts": ["dist/dpa-liveblog-5e60b48048.js"],
+    "styles": ["dist/dpa-liveblog-52541f5de0.css"],
+    "scripts": ["dist/dpa-liveblog-9d9a7111ca.js"],
     "options": [
         {
             "name": "language",
