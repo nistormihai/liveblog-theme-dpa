@@ -10,8 +10,8 @@
     "license": "UNLICENSED",
     "styles": ["dist/dpa-liveblog-52541f5de0.css"],
     "devStyles": ["dist/dpa-liveblog-52541f5de0.css"],
-    "scripts": ["dist/dpa-liveblog-297d6e05fe.js"],
-    "devScripts": ["dist/dpa-liveblog-297d6e05fe.js"],
+    "scripts": ["dist/dpa-liveblog-1f5e4661f5.js"],
+    "devScripts": ["dist/dpa-liveblog-1f5e4661f5.js"],
     "options": [
         {
             "name": "language",
