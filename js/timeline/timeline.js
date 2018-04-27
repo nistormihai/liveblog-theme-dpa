@@ -66,22 +66,6 @@ function TimelineCtrl(
         });
     }
 
-    /**
-     * Trigger embed provider unpacking
-     */
-    function loadEmbeds() {
-      if ($window.instgrm) {
-        $window.instgrm.Embeds.process();
-      }
-
-      if ($window.twttr) {
-        $window.twttr.widgets.load();
-      }
-
-      if ($window.FB) {
-        $window.FB.XFBML.parse();
-      }
-    }
     // define view model
     angular.extend(vm, {
         templateDir: config.assets_root,
@@ -187,7 +171,6 @@ function TimelineCtrl(
 
     vm.fetchNewPage() // retrieve first page
         .then(function() { // retrieve updates periodically
-            loadEmbeds();
             vm.permalinkScroll();
             $interval(retrieveUpdate, UPDATE_EVERY);
             $interval(retrieveStickyUpdate, UPDATE_EVERY);
