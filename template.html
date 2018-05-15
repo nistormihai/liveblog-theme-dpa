@@ -60,15 +60,14 @@ Bitte f&uuml;hren Sie ein <a href="http://browsehappy.com/">Upgrade</a> durch.</
         <div lb-item ng-repeat="item in items track by item._id" class="lb-item">
             <div ng-switch="item.item_type">
                 <div ng-switch-when="embed">
-                    <div ng-switch="item.meta.provider_name">
-                        <div ng-switch-when="Instagram">
-                            <blockquote class="embedly-card" data-card-controls="0">
-                                <h4><a href="{{ item.meta.original_url }}">{{ item.meta.credit }}</a></h4>
-                                <p>{{ item.meta.title }}</p>
-                            </blockquote>
-                        </div>
-                        <div ng-switch-default lb-generic-embed lb-fluid-iframe item="item"></div>
+                    <div ng-if="item.meta.provider_name == 'Instagram' and item.meta.liveblog_version">
+                        <blockquote class="embedly-card" data-card-controls="0">
+                            <h4><a href="{{ item.meta.original_url }}">{{ item.meta.credit }}</a></h4>
+                            <p>{{ item.meta.title }}</p>
+                        </blockquote>
                     </div>
+                    <div ng-if="item.meta.provider_name != 'Instagram' and !item.meta.liveblog_version">
+                        lb-generic-embed lb-fluid-iframe item="item"></div>
                 </div>
                 <div ng-switch-when="image" ng-if="!isGallery">
                     <figure>
